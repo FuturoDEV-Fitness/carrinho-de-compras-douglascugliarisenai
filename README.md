@@ -1,2 +1,38 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/dNOfMvCD)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=15330732&assignment_repo_type=AssignmentRepo)
+# Lab Commerce
+
+## Sobre o Lab Commerce
+
+O _Lab Commerce_ é um sistema backend para e-commerce.
+
+## Problema Resolvido
+
+Cadastrar novos clientes com tecnologia inovadora.
+
+## Tecnologias Utilizadas
+
+- _NodeJS_: 
+- _Express_: 
+
+## Como Executar
+
+1. Clone o repositório para sua máquina local.
+2. Instale as dependências com: npm install.
+3. Acesse o terminal e inicie o servidor com: npm start.
+4. Utilize um ferramenta para consumir a API de sua preferência
+
+## Melhorias Futuras
+
+- _Segurança:_ Inclusão de funcionalidade de autenticação para garantir uma segurança para os usuários.
+- _Projeto:_ Melhorar a organização do projeto e separar bem as responsabilidades.
+
+## Contribuições
+
+Contribuições são sempre bem-vindas! Por favor, leia o arquivo CONTRIBUTING.md para mais detalhes sobre como contribuir para o projeto.
+
+## Licença
+
+Distribuído sob a licença MIT. Veja LICENSE para mais informações.
+
+## Contato
+
+Seu Nome - douglas.cugliari@gmail.com
