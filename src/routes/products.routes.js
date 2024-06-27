@@ -5,6 +5,7 @@ const productsRoutes = new Router();
 const productController = new ProductController()
 
 productsRoutes.post("/", productController.cadastrar.bind(productController));
+productsRoutes.get("/", productController.listar.bind(productController));
 
 
 module.exports = productsRoutes;

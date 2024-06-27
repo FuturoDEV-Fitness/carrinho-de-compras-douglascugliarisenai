@@ -23,6 +23,12 @@ class ProductController extends Database {
             response.status(500).json({ message: "Erro ao cadastrar um novo product." })
         }
     }
+
+    async listar(request, response) {
+        const sql = "SELECT * FROM products";
+        const products = await this.database.query(sql);
+        response.status(200).json(products.rows);
+    }
 }
 
 module.exports = ProductController;
