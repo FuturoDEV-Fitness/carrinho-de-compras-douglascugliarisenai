@@ -26,24 +26,28 @@ class ProductController extends Database {
 
     async listar(request, response) {
         try {
-            const dados = request.query
+            const sql = "SELECT * FROM products";
+            const products = await this.database.query(sql);
 
-
-            if (dados.name) {
-                const sql = "SELECT * FROM products p RIGHT JOIN categories c ON c.id = p.category_id WHERE p.name ilike $1;";
-                const result = await this.database.query(sql, [`%${dados.name}%`]);
-                response.status(200).json(result.rows);
-            } else {
-                const sql = "SELECT * FROM products";
-                const products = await this.database.query(sql);
-                response.status(200).json(products.rows);
-            }
+            products.rows.length == 0 ? response.status(404).json({ message: "Nenhum produto encontrado." }) :
+            response.status(200).json(products.rows);
         } catch {
             response.status(500).json({ message: "Erro ao buscar todos os produtos." })
         }
+    }
 
-
-      
+    async listarUnico(request, response){
+        try {
+            const idProduto = request.params.id;
+        
+            const sql = "SELECT * FROM products p RIGHT JOIN categories c ON c.id = p.category_id WHERE p.id $1;";
+            const result = await this.database.query(sql, [idProduto]);
+    
+            result.rows.length == 0 ? response.status(404).json({ message: "Nenhum produto encontrado." }) :
+            response.status(200).json(result.rows);
+        } catch {
+            response.status(500).json({ message: "Erro ao buscar todos os produtos." })
+        }
     }
 }
 
