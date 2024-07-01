@@ -6,6 +6,7 @@ const productController = new ProductController()
 
 productsRoutes.post("/", productController.cadastrar.bind(productController));
 productsRoutes.get("/", productController.listar.bind(productController));
+productsRoutes.get("/:id", productController.listarUnico.bind(productController));
 
 
 module.exports = productsRoutes;
