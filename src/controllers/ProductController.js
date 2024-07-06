@@ -41,8 +41,8 @@ class ProductController extends Database {
     async listarUnico(request, response){
         try {
             const idProduto = request.params.id;
-        
-            const sql = "SELECT * FROM products p RIGHT JOIN categories c ON c.id = p.category_id WHERE p.id $1;";
+
+            const sql = "select p.id,p.name, p.description, p.color, p.voltage, c.name_categoria from products p inner join categories c on p.category_id = c.id where p.id = $1";
             const result = await this.database.query(sql, [idProduto]);
     
             result.rows.length == 0 ? response.status(404).json({ message: "Nenhum produto encontrado." }) :
