@@ -6,14 +6,16 @@ class ProductController extends Database {
         try {
             const dados = request.body;
 
-            console.log(dados);
-
             const sql =
                 "INSERT INTO products (name,amount,color,voltage, description, category_id) VALUES ($1, $2, $3, $4, $5, $6)";
             const values = [dados.name, dados.amount, dados.color, dados.voltage, dados.description, dados.category_id];
 
             if (!dados.name) {
                 return response.status(400).json({ message: "O name é obrigatório" });
+            }
+
+            if (!dados.category_id) {
+                return response.status(400).json({ message: "O category_id é obrigatório" });
             }
 
             await this.database.query(sql, values);
