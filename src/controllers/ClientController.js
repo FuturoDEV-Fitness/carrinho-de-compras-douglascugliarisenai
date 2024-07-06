@@ -22,20 +22,22 @@ class ClientsController extends Database {
                 return response.status(400).json({ message: "O contact é obrigatório" });
             }
 
-            const sqlConsulta = "SELECT * FROM clients WHERE email = $1";
-            const result = await this.database.query(sqlConsulta, [dados.email]);
-            
-            if (result.rows.length > 0) {
-                return response.status(400).json({ message: "Email ja existe" });
-            } 
+            const sqlConsulta = "SELECT * FROM clients";
+            const result = await this.database.query(sqlConsulta);
+
+            for (let i = 0; i < result.rows.length; i++) {
+                if(result.rows[i].email === dados.email) {
+                    return response.status(400).json({ message: "Email ja existe" });
+                }
+                
+                if(result.rows[i].cpf === dados.cpf) {
+                    return response.status(400).json({ message: "Cpf ja existe" });
+                }
+            }
 
             const sql =
                 "INSERT INTO clients (name,email,cpf,contact) VALUES ($1, $2, $3, $4)";
             const values = [dados.name, dados.email, dados.cpf, dados.contact];
-
-            if (!dados.name) {
-                return response.status(400).json({ message: "O name é obrigatório" });
-            }
 
             await this.database.query(sql, values);
 
